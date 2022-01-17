@@ -9,8 +9,7 @@
   "author": "Scott Nichols",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15"
   }
 }
-
-
