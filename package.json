@@ -1,0 +1,14 @@
+{
+  "name": "note-taker-11",
+  "version": "1.0.0",
+  "description": "Note Take Project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Scott Nichols",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
