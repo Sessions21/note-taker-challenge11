@@ -58,6 +58,19 @@ app.delete('./api/notes/:id', (req, res) => {
   })
 });
 
+// HTML Routes
+app.get('/notes', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/notes'));
+});
+
+app.get('/', (req, res) => {
+  res.sendFile(path.joing(__dirname, './public/index'));
+});
+
+app.get('*', (req, res) => {
+  res.sendFile(path.joing(__dirname, './public/index'));
+});
+
 
 // activate port
 app.listen(PORT, () => {
