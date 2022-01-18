@@ -60,15 +60,15 @@ app.delete('./api/notes/:id', (req, res) => {
 
 // HTML Routes
 app.get('/notes', (req, res) => {
-  res.sendFile(path.join(__dirname, './public/notes'));
+  res.sendFile(path.join(__dirname, './public/notes.html'));
 });
 
 app.get('/', (req, res) => {
-  res.sendFile(path.joing(__dirname, './public/index'));
+  res.sendFile(path.joing(__dirname, './public/index.html'));
 });
 
 app.get('*', (req, res) => {
-  res.sendFile(path.joing(__dirname, './public/index'));
+  res.sendFile(path.joing(__dirname, './public/index.html'));
 });
 
 
