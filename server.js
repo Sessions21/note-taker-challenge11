@@ -35,13 +35,13 @@ app.post('/api/notes', (req, res) => {
     notes.push(note);
     return notes
   }).then( notes => {
-    writeFileAsync('.db/db.json', JSON.stringify(notes))
+    writeFileAsync('./db/db.json', JSON.stringify(notes))
     res.json(note);
   })
 });
 
 // API Delete route.
-app.delete('./api/notes/:id', (req, res) => {
+app.delete('/api/notes/:id', (req, res) => {
   const deleteID = parseInt(req.params.id);
   readFileAsync('./db/db.json', 'utf8').then(data => {
     const notes = [].concat(JSON.parse(data));
