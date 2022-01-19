@@ -43,20 +43,16 @@ app.post('/api/notes', (req, res) => {
 // API Delete route.
 
 app.delete('/api/notes/:id', (req, res) => {
-  const note = notes.find((note) => note.id === Number(req.params.id))
-  if (!note) {
-    return res
-      .status(404)
-      .json({success: false, msg: `no note wtih id ${req.params.id}` })
-  }
-  const newNotes = notes.filter((note) => note.id !== Number(req.params.id))
-  return res.status(200).json({success:true, data: newNotes })
-});
-
-
-
-
-
+  const note = req.body;
+  readFileAsync('./db/db.json', 'utf8').then( data => {
+    const notes = [].concat(JSON.parse(data));
+    note.id = notes.length + 1
+    notes.push(note);
+    return notes
+  }).then( notes => {note.filter((note) => note.id !== Number(req.params.id))
+  return res.status(200).json({success:true, data: notes })
+  })
+ });
 
 // app.delete('/api/notes/:id', (req, res) => {
 //   const deleteID = parseInt(req.params.id);
