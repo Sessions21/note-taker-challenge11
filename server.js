@@ -49,7 +49,7 @@ app.delete('/api/notes/:id', (req, res) => {
     note.id = notes.length + 1
     notes.push(note);
     return notes
-  }).then( notes => {note.filter((note) => note.id !== Number(req.params.id))
+  }).then( notes => {notes.filter((note) => note.id !== Number(req.params.id))
   return res.status(200).json({success:true, data: notes })
   })
  });
