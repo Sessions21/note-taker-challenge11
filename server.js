@@ -16,7 +16,7 @@ app.use(express.static('./public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-
+// Router path extensions defined
 app.use('/api', apiRoutes);
 app.use('/', htmlRoutes);
 
