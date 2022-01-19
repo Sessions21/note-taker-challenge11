@@ -41,22 +41,39 @@ app.post('/api/notes', (req, res) => {
 });
 
 // API Delete route.
+
 app.delete('/api/notes/:id', (req, res) => {
-  const deleteID = parseInt(req.params.id);
-  readFileAsync('./db/db.json', 'utf8').then(data => {
-    const notes = [].concat(JSON.parse(data));
-    const remainingNotes = []
-    for (let i = 0; i<notes.length; i++) {
-      if(deleteID !== notes[i].id) {
-        notesNew.push(notes[i])
-      }
-    }
-    return remainingNotes
-  }).then( notes => {
-    writeFileAsync('./db/db.json', JSON.stringify(notes))
-    res.send('saved!');
-  })
+  const note = notes.find((note) => note.id === Number(req.params.id))
+  if (!note) {
+    return res
+      .status(404)
+      .json({success: false, msg: `no note wtih id ${req.params.id}` })
+  }
+  const newNotes = notes.filter((note) => note.id !== Number(req.params.id))
+  return res.status(200).json({success:true, data: newNotes })
 });
+
+
+
+
+
+
+// app.delete('/api/notes/:id', (req, res) => {
+//   const deleteID = parseInt(req.params.id);
+//   readFileAsync('./db/db.json', 'utf8').then(data => {
+//     const notes = [].concat(JSON.parse(data));
+//     const remainingNotes = []
+//     for (let i = 0; i<notes.length; i++) {
+//       if(deleteID !== notes[i].id) {
+//         notesNew.push(notes[i])
+//       }
+//     }
+//     return remainingNotes
+//   }).then( notes => {
+//     writeFileAsync('./db/db.json', JSON.stringify(notes))
+//     res.send('saved!');
+//   })
+// });
 
 // HTML Routes
 app.get('/notes', (req, res) => {
