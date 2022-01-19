@@ -30,5 +30,25 @@ router.post('/notes', (req, res) => {
 });
 
 
+//API Delete route
+router.delete('/notes/:id', (req, res) => {
+  const id = req.params.id
+  console.log(req.params.id);
+  notes = notes.filter(note => note.id != id);
+
+  fs.writeFileSync('./db/db.json', JSON.stringify
+  (notes), function(error){
+    if (error){
+    console.log(error)};
+  });
+  
+  res.json ({
+    message: 'deleted',
+    //change: req.params.id,
+    data:id
+  });
+
+  res.end();
+});
 
 module.exports = router
